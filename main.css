@@ -30,7 +30,7 @@ video {
     }
 .pageOverlay
 {
-	background: rgba(0,0,0,0.67);
+	background: rgba(128,0,128,1);
 	display: block;
 	height: 100%;
 	left: 0;
