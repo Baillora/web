@@ -34,36 +34,37 @@
     <link rel="stylesheet" href="font-awesome.min.css"> </head>
 
 <body oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
-    <bgsound id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
-        <source src="mf2.mp3" type="audio/mp3"> </video>
-        <video autoplay="1" loop="1" muted="1">
-            <source src="fon.mp4" type="video/mp4" />
-        </video>
-        <div class="pageOverlay">
-            <div class="bg-animation">
-                <div id='stars'></div>
-                <div id='stars2'></div>
-                <div id='stars3'></div>
-                <div id='stars4'></div>
-            </div> <img border="0">
-            <div id="main">
-                <div class="lightbox">
-                    <div class="wrapper">
-                        <div class="titles animate">
-                            <h1>Baillora</h1>
-                            <div class="media animate">
-                                <a href="https://vk.com/baillora" target="_blank"> <i class="fab fa-vk fa-lg" aria-hidden="true"></i> </a>
-                                <a href="https://steamcommunity.com/id/Baillora" target="_blank"> <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i> </a>
-                                <a src="mf2.mp3" target="_blank"> <i class="fa-solid fa-music" aria-hidden="true"></i>
-                                    <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank"> <i class="fa-brands fa-youtube" aria-hidden="true"></i> </a>
-                                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> <i class="fa-regular fa-face-smile" aria-hidden="true"></i> </a>
-                            </div>
-                            <hr>
-                            <div class="projects"><a target="_blank">• Russian student •</a></div>
+    <audio id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
+        <source src="mf2.mp3" type="audio/mp3"> </audio>
+    <video autoplay="1" loop="1" muted="1">
+        <source src="fon.mp4" type="video/mp4" /> </video>
+    <div class="pageOverlay">
+        <div class="bg-animation">
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+            <div id='stars4'></div>
+        </div> <img border="0">
+        <div id="main">
+            <div class="lightbox">
+                <div class="wrapper">
+                    <div class="titles animate">
+                        <h1>Baillora</h1>
+                        <div class="media animate">
+                            <a href="https://vk.com/baillora" target="_blank"> <i class="fab fa-vk fa-lg" aria-hidden="true"></i> </a>
+                            <a href="https://steamcommunity.com/id/Baillora" target="_blank"> <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i> </a>
+                            <audio id="myAudio">
+                                <source src="mf2.mp3" type="audio/mpeg"> </audio>
+                            <a href="#" onclick="document.getElementById('myAudio').play();"> <i class="fa-solid fa-music" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank"> <i class="fa-brands fa-youtube" aria-hidden="true"></i> </a>
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> <i class="fa-regular fa-face-smile" aria-hidden="true"></i> </a>
                         </div>
+                        <hr>
+                        <div class="projects"><a target="_blank">• Russian student •</a></div>
                     </div>
                 </div>
             </div>
+        </div>
 </body>
 <script>
     var audio = document.getElementById("music");
@@ -92,4 +93,3 @@ ____________*########*
 _____________*######*
 ______________*###*
 ______________*##*
---!>
