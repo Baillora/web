@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Baillora</title>
     <link href="main.css" rel="stylesheet">
     <meta property="og:title" content="Baillora">
     <link rel="icon" href="123.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
-  </head>
-  <body oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
-    <audio id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
-      <source src="mf2.mp3" type="audio/mp3">
-    </audio>
-    <video autoplay="1" loop="1" muted="1">
-      <source src="fon.mp4" type="video/mp4" />
-    </video>
-    <div class="pageOverlay">
-      <div class="bg-animation">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div id="stars4"></div>
-      </div>
-      <div id="main">
-        <div class="lightbox">
-          <div class="wrapper">
-            <div class="titles animate">
-              <h1>Baillora</h1>
-              <div class="media animate">
-                <a href="https://vk.com/baillora" target="_blank"><i class="fab fa-vk fa-lg" aria-hidden="true"></i></a>
-                <a href="https://steamcommunity.com/id/Baillora" target="_blank"><i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i></a>
-                <audio id="myAudio">
-                  <source src="mf2.mp3" type="audio/mpeg">
-                </audio>
-                <a href="#" onclick="playOrPauseMusic();"><i class="fa-solid fa-music" aria-hidden="true"></i></a>
-                <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><i class="fa-regular fa-face-smile" aria-hidden="true"></i></a>
-                <script>
-                  var audio = document.getElementById("myAudio");
-                  var isPlaying = false;
+</head>
 
-                  function playOrPauseMusic() {
-                    if (isPlaying) {
-                      audio.pause();
-                      isPlaying = false;
-                    } else {
-                      audio.play();
-                      isPlaying = true;
-                    }
-                  }
-                </script>
-              </div>
-              <hr>
-              <div class="projects"><a target="_blank">• Russian student •</a></div>
-            </div>
-          </div>
+<body oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
+    <audio id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
+        <source src="mf2.mp3" type="audio/mp3"> </audio>
+    <video autoplay="1" loop="1" muted="1">
+        <source src="fon.mp4" type="video/mp4" /> </video>
+    <div class="pageOverlay">
+        <div class="bg-animation">
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+            <div id="stars4"></div>
         </div>
-      </div>
+        <div id="main">
+            <div class="lightbox">
+                <div class="wrapper">
+                    <div class="titles animate">
+                        <h1>Baillora</h1>
+                        <div class="media animate"> <a href="https://vk.com/baillora" target="_blank"><i class="fab fa-vk fa-lg" aria-hidden="true"></i></a> <a href="https://steamcommunity.com/id/Baillora" target="_blank"><i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i></a>
+                            <audio id="myAudio" loop>
+                                <source src="mf2.mp3" type="audio/mpeg"> </audio> <a href="#" onclick="playOrPauseMusic();"><i class="fa-solid fa-music" aria-hidden="true"></i></a> <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><i class="fa-regular fa-face-smile" aria-hidden="true"></i></a>
+                            <script>
+                                var audio = document.getElementById("myAudio");
+                                var isPlaying = false;
+
+                                function playOrPauseMusic() {
+                                    if (isPlaying) {
+                                        audio.pause();
+                                        isPlaying = false;
+                                    }
+                                    else {
+                                        audio.play();
+                                        isPlaying = true;
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <hr>
+                        <div class="projects"><a target="_blank">• Russian student •</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
-      var audio = document.getElementById("music");
-      audio.volume = 1;
+        var audio = document.getElementById("music");
+        audio.volume = 1;
     </script>
-  </body>
+</body>
+
 </html>
 <!--
 _____*#####*
