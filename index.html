@@ -7,9 +7,23 @@
     <meta property="og:title" content="Baillora">
     <link rel="icon" href="123.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
+    <script>
+        function changeFon() {
+            var date = new Date();
+            var month = date.getMonth();
+            var day = date.getDate();
+            var video = document.querySelector('video');
+            if (month === 2 && day === 22) {
+                video.src = 'birthday.mp4';
+            }
+            else if (day === 16) {
+                video.src = 'fon1.mp4';
+            }
+        }
+    </script>
 </head>
 
-<body oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
+<body onload="changeFon()" oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
     <audio id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
         <source src="mf2.mp3" type="audio/mp3"> </audio>
     <video autoplay="1" loop="1" muted="1">
