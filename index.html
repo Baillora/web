@@ -6,9 +6,7 @@
     <link href="main.css" rel="stylesheet">
     <meta property="og:title" content="Baillora">
     <link rel="icon" href="123.png" type="image/x-icon">
-
-    <!-- Подключение стилей и скриптов -->
-    <link href="loading-bar.css" rel="stylesheet" />
+    <link href="corner-indicator.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
     <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
 
@@ -30,12 +28,10 @@
 
 <body onload="changeFon()" oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
 
-    <!-- Единственный аудио элемент -->
     <audio id="myAudio" controls loop autoplay name="media" preload="auto" hidden>
         <source src="mf2.mp3" type="audio/mp3">
     </audio>
 
-    <!-- Видео фон -->
     <video autoplay loop muted>
         <source src="fon.mp4" type="video/mp4" />
     </video>
@@ -53,7 +49,6 @@
                     <div class="titles animate">
                         <h1>Baillora</h1>
                         <div class="media animate">
-                            <!-- Ссылки на социальные сети -->
                             <a href="https://vk.com/baillora" target="_blank">
                                 <i class="fab fa-vk fa-lg" aria-hidden="true"></i>
                             </a>
@@ -61,7 +56,6 @@
                                 <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i>
                             </a>
 
-                            <!-- Кнопка управления музыкой -->
                             <a href="#" onclick="playOrPauseMusic();">
                                 <i class="fa-solid fa-music" aria-hidden="true"></i>
                             </a>
@@ -74,7 +68,6 @@
                             </a>
                         </div>
 
-                        <!-- Скрипт управления музыкой -->
                         <script>
                             var audio = document.getElementById("myAudio");
                             var isPlaying = false;
@@ -101,7 +94,6 @@
         </div>
     </div>
 
-    <!-- Скрипт для установки громкости аудио -->
     <script>
         var audio = document.getElementById("myAudio");
         audio.volume = 1;
