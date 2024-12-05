@@ -6,6 +6,8 @@
     <link href="main.css" rel="stylesheet">
     <meta property="og:title" content="Baillora">
     <link rel="icon" href="123.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/black/pace-theme-flash.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
     <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
     <script>
         function changeFon() {
@@ -24,9 +26,6 @@
 </head>
 
 <body onload="changeFon()" oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
-      <div id="preloader">
-    <div class="loader"></div>
-  </div>
     <audio id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
         <source src="mf2.mp3" type="audio/mp3"> </audio>
     <video autoplay="1" loop="1" muted="1">
@@ -67,10 +66,6 @@
                                 }
                             }
                                 window.addEventListener('load', function() {
-      var preloader = document.getElementById('preloader');
-      preloader.style.opacity = '0';
-      preloader.style.visibility = 'hidden';
-    });
                         </script>
                         <hr>
                         <div class="projects"><a href="https://www.sibsau.ru/page/home/" target="_blank">• Russian student •</a></div>
