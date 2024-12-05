@@ -24,6 +24,9 @@
 </head>
 
 <body onload="changeFon()" oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
+      <div id="preloader">
+    <div class="loader"></div>
+  </div>
     <audio id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
         <source src="mf2.mp3" type="audio/mp3"> </audio>
     <video autoplay="1" loop="1" muted="1">
@@ -63,6 +66,11 @@
                                     isPlaying = true;
                                 }
                             }
+                                window.addEventListener('load', function() {
+      var preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+    });
                         </script>
                         <hr>
                         <div class="projects"><a href="https://www.sibsau.ru/page/home/" target="_blank">• Russian student •</a></div>
