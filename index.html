@@ -6,9 +6,12 @@
     <link href="main.css" rel="stylesheet">
     <meta property="og:title" content="Baillora">
     <link rel="icon" href="123.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/black/pace-theme-flash.css" rel="stylesheet" />
+
+    <!-- Подключение стилей и скриптов -->
+    <link href="loading-bar.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
     <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
+
     <script>
         function changeFon() {
             var date = new Date();
@@ -26,10 +29,17 @@
 </head>
 
 <body onload="changeFon()" oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
-    <audio id="music" controls="" loop="-1" autoplay="" name="media" preload="auto" hidden>
-        <source src="mf2.mp3" type="audio/mp3"> </audio>
-    <video autoplay="1" loop="1" muted="1">
-        <source src="fon.mp4" type="video/mp4" /> </video>
+
+    <!-- Единственный аудио элемент -->
+    <audio id="myAudio" controls loop autoplay name="media" preload="auto" hidden>
+        <source src="mf2.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Видео фон -->
+    <video autoplay loop muted>
+        <source src="fon.mp4" type="video/mp4" />
+    </video>
+
     <div class="pageOverlay">
         <div class="bg-animation">
             <div id="stars"></div>
@@ -43,14 +53,28 @@
                     <div class="titles animate">
                         <h1>Baillora</h1>
                         <div class="media animate">
-                            <a href="https://vk.com/baillora" target="_blank"> <i class="fab fa-vk fa-lg" aria-hidden="true"></i> </a>
-                            <a href="https://steamcommunity.com/id/Baillora" target="_blank"> <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i> </a>
-                            <audio id="myAudio" loop>
-                                <source src="mf2.mp3" type="audio/mpeg"> </audio>
-                            <a href="#" onclick="playOrPauseMusic();"> <i class="fa-solid fa-music" aria-hidden="true"></i> </a>
-                            <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank"> <i class="fa-brands fa-youtube" aria-hidden="true"></i> </a>
-                            <a href="https://www.youtube.com/watch?v=hvL1339luv0" target="_blank"> <i class="fa-regular fa-face-smile" aria-hidden="true"></i> </a>
+                            <!-- Ссылки на социальные сети -->
+                            <a href="https://vk.com/baillora" target="_blank">
+                                <i class="fab fa-vk fa-lg" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://steamcommunity.com/id/Baillora" target="_blank">
+                                <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i>
+                            </a>
+
+                            <!-- Кнопка управления музыкой -->
+                            <a href="#" onclick="playOrPauseMusic();">
+                                <i class="fa-solid fa-music" aria-hidden="true"></i>
+                            </a>
+
+                            <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank">
+                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=hvL1339luv0" target="_blank">
+                                <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
+                            </a>
                         </div>
+
+                        <!-- Скрипт управления музыкой -->
                         <script>
                             var audio = document.getElementById("myAudio");
                             var isPlaying = false;
@@ -65,19 +89,24 @@
                                     isPlaying = true;
                                 }
                             }
-                                window.addEventListener('load', function() {
                         </script>
+
                         <hr>
-                        <div class="projects"><a href="https://www.sibsau.ru/page/home/" target="_blank">• Russian student •</a></div>
+                        <div class="projects">
+                            <a href="https://www.sibsau.ru/page/home/" target="_blank">• Russian student •</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Скрипт для установки громкости аудио -->
     <script>
-        var audio = document.getElementById("music");
+        var audio = document.getElementById("myAudio");
         audio.volume = 1;
     </script>
+
 </body>
 
 </html>
