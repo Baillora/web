@@ -12,7 +12,7 @@
   <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
   
   <style>
-    /* Анимация падающих сердечек */
+    
     @keyframes heart-fall {
       0% {
         transform: translateY(-100px) scale(1);
@@ -33,7 +33,7 @@
       text-shadow: 0 0 8px rgba(255, 0, 0, 0.9);
       filter: brightness(200%);
     }
-    /* Стили для блока с надписью */
+
     #specialMessage {
       position: fixed;
       bottom: 10px;
@@ -48,7 +48,7 @@
       font-family: 'Roboto', sans-serif;
       display: none;
     }
-    /* Контейнер для падающих сердечек */
+
     #heartsContainer {
       position: fixed;
       top: 0;
@@ -62,19 +62,17 @@
   </style>
   
   <script>
-    // Глобальный флаг для отслеживания текущего режима видео:
-    // "birthday" - 22.03, "celebration" - 16 или круглая дата, "default" - все остальные дни.
+
     let currentVideoMode = "";
-    // Интервал для генерации сердечек (только в режиме праздника)
     let heartsIntervalId = null;
     
     function updatePage() {
-      let startDate = new Date(2022, 5, 16); // 16 июня 2022
+      let startDate = new Date(2022, 5, 16); 
       let today = new Date();
       let daysTogether = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
       
       let day = today.getDate();
-      let month = today.getMonth() + 1; // месяцы: 1-12
+      let month = today.getMonth() + 1; 
       let isRoundDate = (daysTogether % 100 === 0) && daysTogether > 0;
       let isSixteenth = (day === 16);
       let isBirthday = (day === 22 && month === 3);
@@ -91,11 +89,10 @@
       let video = document.querySelector("video");
       let message = document.getElementById("specialMessage");
       
-      // Обновляем видео только при изменении режима
       if (newMode !== currentVideoMode) {
         if (newMode === "birthday") {
           video.src = "birthday.mp4";
-          video.loop = false; // проигрываем полный ролик
+          video.loop = false;
           disableStars();
           showCelebration(false);
         } else if (newMode === "celebration") {
@@ -129,7 +126,6 @@
       });
     }
     
-    // Управление показом праздничных эффектов (сердечки и текст)
     function showCelebration(show) {
       let message = document.getElementById("specialMessage");
       let heartsContainer = document.getElementById("heartsContainer");
@@ -178,7 +174,6 @@
       }
     }
     
-    // Обновляем состояние каждую секунду, чтобы сразу реагировать на изменения даты
     document.addEventListener("DOMContentLoaded", function () {
       updatePage();
       setInterval(updatePage, 1000);
@@ -263,130 +258,6 @@ ______________*##*
 ______________*#*
 _______________*
 
-<!--<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Baillora</title>
-    <link href="main.css" rel="stylesheet">
-    <meta property="og:title" content="Baillora">
-    <link rel="icon" href="123.png" type="image/x-icon">
-    <link href="corner-indicator.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
-    <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
-
-    <script>
-        function changeFon() {
-            var date = new Date();
-            var month = date.getMonth();
-            var day = date.getDate();
-            var video = document.querySelector('video');
-            if (month === 2 && day === 22) {
-                video.src = 'birthday.mp4';
-            }
-            else if (day === 16) {
-                video.src = 'fon1.mp4';
-            }
-        }
-    </script>
-</head>
-
-<body onload="changeFon()" oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
-
-    <audio id="myAudio" controls loop autoplay name="media" preload="auto" hidden>
-        <source src="mf2.mp3" type="audio/mp3">
-    </audio>
-
-    <video autoplay loop muted>
-        <source src="fon.mp4" type="video/mp4" />
-    </video>
-
-    <div class="pageOverlay">
-        <div class="bg-animation">
-            <div id="stars"></div>
-            <div id="stars2"></div>
-            <div id="stars3"></div>
-            <div id="stars4"></div>
-        </div>
-        <div id="main">
-            <div class="lightbox">
-                <div class="wrapper">
-                    <div class="titles animate">
-                        <h1>Baillora</h1>
-                        <div class="media animate">
-                            <a href="https://vk.com/baillora" target="_blank">
-                                <i class="fab fa-vk fa-lg" aria-hidden="true"></i>
-                            </a>
-                            <a href="https://steamcommunity.com/id/Baillora" target="_blank">
-                                <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i>
-                            </a>
-
-                            <a href="#" onclick="playOrPauseMusic();">
-                                <i class="fa-solid fa-music" aria-hidden="true"></i>
-                            </a>
-
-                            <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank">
-                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-                            </a>
-                            <a href="https://www.youtube.com/watch?v=hvL1339luv0" target="_blank">
-                                <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
-                            </a>
-                        </div>
-
-                        <script>
-                            var audio = document.getElementById("myAudio");
-                            var isPlaying = false;
-
-                            function playOrPauseMusic() {
-                                if (isPlaying) {
-                                    audio.pause();
-                                    isPlaying = false;
-                                }
-                                else {
-                                    audio.play();
-                                    isPlaying = true;
-                                }
-                            }
-                        </script>
-
-                        <hr>
-                        <div class="projects">
-                            <a href="https://www.sibsau.ru/page/home/" target="_blank">• Russian student •</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        var audio = document.getElementById("myAudio");
-        audio.volume = 1;
-    </script>
-
-</body>
-
-</html>
-<!--
-_____*#####*
-___*########*
-_*###########*
-_*############*______*###*
-_*#############*____*######*
-_*#############*_____*#######*
-_*#############*___*##########*
-__*#############*_*###########*
-___*#############*############*
-____*########################*
-_____*#######################*
-______*######16.06.2022######*
-________*##################*
-_________*################*
-__________*#############*
-___________*##########*
-____________*########*
-_____________*######*
-______________*###*
 ______________*##*
 ______________*#*
 _______________*
