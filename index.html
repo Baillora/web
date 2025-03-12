@@ -1,236 +1,232 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baillora</title>
-  <link href="main.css" rel="stylesheet">
-  <meta property="og:title" content="Baillora">
-  <link rel="icon" href="123.png" type="image/x-icon">
-  <link href="corner-indicator.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
-  <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
-  
-  <style>
-    
-    @keyframes heart-fall {
-      0% {
-        transform: translateY(-100px) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-    }
-    .heart {
-      position: fixed;
-      top: -50px;
-      pointer-events: none;
-      animation-name: heart-fall;
-      animation-timing-function: linear;
-      animation-iteration-count: 1;
-      text-shadow: 0 0 8px rgba(255, 0, 0, 0.9);
-      filter: brightness(200%);
-    }
 
-    #specialMessage {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      color: white;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-family: 'Roboto', sans-serif;
-      display: none;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baillora</title>
+    <link href="main.css" rel="stylesheet">
+    <meta property="og:title" content="Baillora">
+    <link rel="icon" href="123.png" type="image/x-icon">
+    <link href="corner-indicator.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script>
+    <script src="https://kit.fontawesome.com/1dc79ed8e1.js" crossorigin="anonymous"></script>
 
-    #heartsContainer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      display: none;
-    }
-  </style>
-  
-  <script>
-
-    let currentVideoMode = "";
-    let heartsIntervalId = null;
-    
-    function updatePage() {
-      let startDate = new Date(2022, 5, 16); 
-      let today = new Date();
-      let daysTogether = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-      
-      let day = today.getDate();
-      let month = today.getMonth() + 1; 
-      let isRoundDate = (daysTogether % 100 === 0) && daysTogether > 0;
-      let isSixteenth = (day === 16);
-      let isBirthday = (day === 22 && month === 3);
-      
-      let newMode = "";
-      if (isBirthday) {
-        newMode = "birthday";
-      } else if (isRoundDate || isSixteenth) {
-        newMode = "celebration";
-      } else {
-        newMode = "default";
+    <style>
+      @keyframes heart-fall {
+        0% {
+          transform: translateY(-100px) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) scale(0.5);
+          opacity: 0;
+        }
       }
       
-      let video = document.querySelector("video");
-      let message = document.getElementById("specialMessage");
+      .heart {
+        position: fixed;
+        top: -50px;
+        pointer-events: none;
+        animation-name: heart-fall;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+        text-shadow: 0 0 8px rgba(255, 0, 0, 0.9);
+        filter: brightness(200%);
+      }
       
-      if (newMode !== currentVideoMode) {
-        if (newMode === "birthday") {
-          video.src = "birthday.mp4";
-          video.loop = false;
-          disableStars();
-          showCelebration(false);
-        } else if (newMode === "celebration") {
-          video.src = "fon1.mp4";
-          video.loop = true;
-          disableStars();
-          showCelebration(true);
+      #specialMessage {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: white;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-family: 'Roboto', sans-serif;
+        display: none;
+      }
+      
+      #heartsContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        display: none;
+      }
+    </style>
+
+    <script>
+      let currentVideoMode = "";
+      let heartsIntervalId = null;
+
+      function updatePage() {
+        let startDate = new Date(2022, 5, 16);
+        let today = new Date();
+        let daysTogether = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        let day = today.getDate();
+        let month = today.getMonth() + 1;
+        let isRoundDate = (daysTogether % 100 === 0) && daysTogether > 0;
+        let isSixteenth = (day === 16);
+        let isBirthday = (day === 22 && month === 3);
+        let newMode = "";
+        if (isBirthday) {
+          newMode = "birthday";
+        } else if (isRoundDate || isSixteenth) {
+          newMode = "celebration";
         } else {
-          video.src = "fon.mp4";
-          video.loop = true;
-          enableStars();
-          showCelebration(false);
+          newMode = "default";
         }
-        currentVideoMode = newMode;
-      }
-      
-      if (message) {
-        message.innerHTML = `🎉 ${daysTogether} дней вместе! Люблю тебя! ❤️`;
-      }
-    }
-    
-    function disableStars() {
-      document.querySelectorAll("#stars, #stars2, #stars3, #stars4").forEach(star => {
-        star.style.display = "none";
-      });
-    }
-    
-    function enableStars() {
-      document.querySelectorAll("#stars, #stars2, #stars3, #stars4").forEach(star => {
-        star.style.display = "block";
-      });
-    }
-    
-    function showCelebration(show) {
-      let message = document.getElementById("specialMessage");
-      let heartsContainer = document.getElementById("heartsContainer");
-      if (show) {
-        message.style.display = "block";
-        heartsContainer.style.display = "block";
-        if (!heartsIntervalId) {
-          heartsIntervalId = setInterval(createHearts, 300);
+        let video = document.querySelector("video");
+        let message = document.getElementById("specialMessage");
+        if (newMode !== currentVideoMode) {
+          if (newMode === "birthday") {
+            video.src = "birthday.mp4";
+            video.loop = false;
+            disableStars();
+            showCelebration(false);
+          } else if (newMode === "celebration") {
+            video.src = "fon1.mp4";
+            video.loop = true;
+            disableStars();
+            showCelebration(true);
+          } else {
+            video.src = "fon.mp4";
+            video.loop = true;
+            enableStars();
+            showCelebration(false);
+          }
+          currentVideoMode = newMode;
         }
-      } else {
-        message.style.display = "none";
-        heartsContainer.style.display = "none";
-        if (heartsIntervalId) {
-          clearInterval(heartsIntervalId);
-          heartsIntervalId = null;
+        if (message) {
+          message.innerHTML = `🎉 ${daysTogether} дней вместе! Люблю тебя! ❤️`;
         }
-        heartsContainer.innerHTML = "";
       }
-    }
-    
-    function playOrPauseMusic() {
-      var audio = document.getElementById("myAudio");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }
-    
-    function createHearts() {
-      const heartTypes = ["❤️", "💕", "💖", "💘", "❣️", "💝", "💓", "💗"];
-      const heartsContainer = document.getElementById("heartsContainer");
-      for (let i = 0; i < 20; i++) {
-        let heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
-        heart.style.opacity = 1;
-        heart.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
-        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        heart.addEventListener("animationend", function () {
-          heart.remove();
+
+      function disableStars() {
+        document.querySelectorAll("#stars, #stars2, #stars3, #stars4").forEach(star => {
+          star.style.display = "none";
         });
-        heartsContainer.appendChild(heart);
       }
-    }
-    
-    document.addEventListener("DOMContentLoaded", function () {
-      updatePage();
-      setInterval(updatePage, 1000);
-    });
-  </script>
-</head>
-<body oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
-  <audio id="myAudio" controls loop autoplay name="media" preload="auto" hidden>
-    <source src="mf2.mp3" type="audio/mp3">
-  </audio>
-  
-  <video autoplay muted>
-    <source src="fon.mp4" type="video/mp4">
-  </video>
-  
-  <div class="pageOverlay">
-    <div class="bg-animation">
-      <div id="stars"></div>
-      <div id="stars2"></div>
-      <div id="stars3"></div>
-      <div id="stars4"></div>
-    </div>
-    <div id="main">
-      <div class="lightbox">
-        <div class="wrapper">
-          <div class="titles animate">
-            <h1>Baillora</h1>
-            <div class="media animate">
-              <a href="https://vk.com/baillora" target="_blank">
-                <i class="fab fa-vk fa-lg" aria-hidden="true"></i>
-              </a>
-              <a href="https://steamcommunity.com/id/Baillora" target="_blank">
-                <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i>
-              </a>
-              <a href="#" onclick="playOrPauseMusic();">
-                <i class="fa-solid fa-music" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank">
-                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.youtube.com/watch?v=hvL1339luv0" target="_blank">
-                <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
-              </a>
-            </div>
-            <hr>
-            <div class="projects">
-              <a href="https://www.sibsau.ru/page/home/" target="_blank">• Russian student •</a>
+
+      function enableStars() {
+        document.querySelectorAll("#stars, #stars2, #stars3, #stars4").forEach(star => {
+          star.style.display = "block";
+        });
+      }
+
+      function showCelebration(show) {
+        let message = document.getElementById("specialMessage");
+        let heartsContainer = document.getElementById("heartsContainer");
+        if (show) {
+          message.style.display = "block";
+          heartsContainer.style.display = "block";
+          if (!heartsIntervalId) {
+            heartsIntervalId = setInterval(createHearts, 300);
+          }
+        } else {
+          message.style.display = "none";
+          heartsContainer.style.display = "none";
+          if (heartsIntervalId) {
+            clearInterval(heartsIntervalId);
+            heartsIntervalId = null;
+          }
+          heartsContainer.innerHTML = "";
+        }
+      }
+
+      function playOrPauseMusic() {
+        var audio = document.getElementById("myAudio");
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      }
+
+      function createHearts() {
+        const heartTypes = ["❤️", "💕", "💖", "💘", "❣️", "💝", "💓", "💗"];
+        const heartsContainer = document.getElementById("heartsContainer");
+        for (let i = 0; i < 20; i++) {
+          let heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+          heart.style.opacity = 1;
+          heart.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
+          heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+          heart.addEventListener("animationend", function() {
+            heart.remove();
+          });
+          heartsContainer.appendChild(heart);
+        }
+      }
+      document.addEventListener("DOMContentLoaded", function() {
+        updatePage();
+        setInterval(updatePage, 1000);
+      });
+    </script>
+  </head>
+
+  <body oncopy="return false;" onmousedown="return false;" oncontextmenu="return false;">
+    <audio id="myAudio" controls loop autoplay name="media" preload="auto" hidden>
+      <source src="mf2.mp3" type="audio/mp3">
+    </audio>
+
+    <video autoplay muted>
+      <source src="fon.mp4" type="video/mp4">
+    </video>
+
+    <div class="pageOverlay">
+      <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div id="stars4"></div>
+      </div>
+      <div id="main">
+        <div class="lightbox">
+          <div class="wrapper">
+            <div class="titles animate">
+              <h1>Baillora</h1>
+              <div class="media animate">
+                <a href="https://vk.com/baillora" target="_blank">
+                  <i class="fab fa-vk fa-lg" aria-hidden="true"></i>
+                </a>
+                <a href="https://steamcommunity.com/id/Baillora" target="_blank">
+                  <i class="fab fa-steam-symbol fa-lg" aria-hidden="true"></i>
+                </a>
+                <a href="#" onclick="playOrPauseMusic();">
+                  <i class="fa-solid fa-music" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCQGtYkEvn7s1cElTiRTq9TA" target="_blank">
+                  <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hvL1339luv0" target="_blank">
+                  <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
+                </a>
+              </div>
+              <hr>
+              <div class="projects">
+                <a href="https://www.sibsau.ru/page/home/" target="_blank">• Russian student •</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div id="specialMessage"></div>
-  <div id="heartsContainer"></div>
-</body>
+
+    <div id="specialMessage"></div>
+    <div id="heartsContainer"></div>
+  </body>
+
 </html>
 
 
